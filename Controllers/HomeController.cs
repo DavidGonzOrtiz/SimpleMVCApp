@@ -7,15 +7,18 @@ namespace SimpleMVCApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly PersonaDataContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, PersonaDataContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var personas = _context.personas.ToList(); // Obtenemos la lista de personas de la base de datos
+            return View(personas); // Pasamos la lista a la vista Index
         }
 
         public IActionResult Privacy()

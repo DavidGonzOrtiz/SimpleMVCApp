@@ -1,8 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<SimpleMVCApp.Models.Persona>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome a la versión 2.0</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personas</title>
+</head>
+<body>
+    <h1>Lista de Personas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var persona in Model)
+            {
+                <tr>
+                    <td>@persona.PersonaID</td>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellidos</td>
+                    <td>@persona.Edad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

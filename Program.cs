@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using SimpleMVCApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Configurar la cadena de conexión al DbContext
+var connectionString = builder.Configuration.GetConnectionString("DefaultConecction");  // Nota: Verifica que no haya error tipográfico aquí
+
+builder.Services.AddDbContext<PersonaDataContext>(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
